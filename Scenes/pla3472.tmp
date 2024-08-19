@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://ck41kmgg3s5db"]
+
+[ext_resource type="Script" path="res://Source/player.gd" id="1_r4vge"]
+[ext_resource type="Texture2D" uid="uid://blceeihef0f3v" path="res://Assets/Sprites/PlayerBigTemp.png" id="2_nyu4s"]
+[ext_resource type="Texture2D" uid="uid://ct1budgttc50y" path="res://Assets/Sprites/PlayerSmallTemp.png" id="3_7160q"]
+[ext_resource type="Shape2D" uid="uid://ctqgh58mnortl" path="res://Assets/Resources/big_player_shape.tres" id="3_psuat"]
+[ext_resource type="Shape2D" uid="uid://bytmxoideygvy" path="res://Assets/Resources/small_player_shape.tres" id="4_c87id"]
+[ext_resource type="Texture2D" uid="uid://da8kjermu6x84" path="res://Assets/Sprites/PlayerFace.png" id="5_g6fsr"]
+[ext_resource type="AudioStream" uid="uid://cmosax6ta2odo" path="res://Assets/Sounds/Hurt.wav" id="5_u66x8"]
+[ext_resource type="AudioStream" uid="uid://iy8if4qqexvo" path="res://Assets/Sounds/Jump.wav" id="6_x5abq"]
+[ext_resource type="AudioStream" uid="uid://brbhsta8q21dp" path="res://Assets/Sounds/SizeUp.wav" id="7_lnljm"]
+[ext_resource type="AudioStream" uid="uid://c6is448aqq50o" path="res://Assets/Sounds/SizeDown.wav" id="8_o1gnt"]
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_r4vge")
+big_sprite = ExtResource("2_nyu4s")
+small_sprite = ExtResource("3_7160q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+z_as_relative = false
+texture = ExtResource("2_nyu4s")
+
+[node name="FaceSprite" type="Sprite2D" parent="."]
+z_index = 1
+z_as_relative = false
+position = Vector2(2, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("5_g6fsr")
+
+[node name="BigShape" type="CollisionShape2D" parent="."]
+shape = ExtResource("3_psuat")
+
+[node name="SmallShape" type="CollisionShape2D" parent="."]
+shape = ExtResource("4_c87id")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Big" type="CollisionShape2D" parent="Area2D"]
+shape = ExtResource("3_psuat")
+
+[node name="Small" type="CollisionShape2D" parent="Area2D"]
+shape = ExtResource("4_c87id")
+
+[node name="CheckForCeil" type="RayCast2D" parent="."]
+target_position = Vector2(0, -24)
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_u66x8")
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_x5abq")
+
+[node name="Grow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lnljm")
+
+[node name="Shrink" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_o1gnt")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area"]

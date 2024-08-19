@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://dg2l66ln5ghih"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.gd" id="1_r0t6m"]
+
+[resource]
+script = ExtResource("1_r0t6m")
+name = "Sign"
+color = Color(1, 1, 1, 1)

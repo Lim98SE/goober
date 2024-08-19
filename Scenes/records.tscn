@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://ch3mcvvyoq5ey"]
+
+[ext_resource type="Script" path="res://Source/records.gd" id="1_sap85"]
+[ext_resource type="Theme" uid="uid://bjf5gtjsh1g3a" path="res://Assets/Resources/gui.tres" id="2_wif1l"]
+[ext_resource type="Script" path="res://Source/transitionButton.gd" id="3_nff00"]
+[ext_resource type="Script" path="res://Source/reset_records.gd" id="4_3ruei"]
+[ext_resource type="LabelSettings" uid="uid://dnekwurdvmdlu" path="res://Assets/Resources/timer.tres" id="4_v0opk"]
+[ext_resource type="AudioStream" uid="uid://2x2q0k1lpljj" path="res://Assets/Music/Stats_Goob_Alt.mp3" id="6_ilnai"]
+[ext_resource type="PackedScene" uid="uid://dvs0ux20gasq2" path="res://Scenes/Background.tscn" id="7_2n7xr"]
+[ext_resource type="AudioStream" uid="uid://bvatrl6xgthko" path="res://Assets/Sounds/ding.wav" id="8_uotmb"]
+
+[node name="Scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sap85")
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_top = 320.0
+offset_right = 210.0
+offset_bottom = 360.0
+size_flags_horizontal = 3
+theme = ExtResource("2_wif1l")
+text = "Back to Menu"
+script = ExtResource("3_nff00")
+to = "menu"
+
+[node name="Reset" type="Button" parent="."]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 320.0
+offset_right = 424.0
+offset_bottom = 360.0
+size_flags_horizontal = 3
+theme = ExtResource("2_wif1l")
+text = "Reset Records"
+script = ExtResource("4_3ruei")
+
+[node name="ScoreScroll" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 624.0
+offset_bottom = 312.0
+theme = ExtResource("2_wif1l")
+
+[node name="ScoreCont" type="VBoxContainer" parent="ScoreScroll"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 640.0
+offset_bottom = 51.0
+text = "Your Records"
+label_settings = ExtResource("4_v0opk")
+horizontal_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ilnai")
+autoplay = true
+bus = &"Music"
+
+[node name="Background" parent="." instance=ExtResource("7_2n7xr")]
+
+[node name="Ding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_uotmb")
+
+[node name="StartScoreReset" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="Reset" to="Reset" method="_on_pressed"]
+[connection signal="timeout" from="StartScoreReset" to="." method="start_reset"]

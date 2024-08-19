@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bivgibdg62lut"]
+
+[ext_resource type="Texture2D" uid="uid://6go3yjw1qfvn" path="res://Assets/Sprites/sign.png" id="1_1o38l"]
+[ext_resource type="Script" path="res://Source/sign.gd" id="1_hjjen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc6s4"]
+size = Vector2(16, 16)
+
+[node name="Sign" type="Area2D" groups=["Interactable"]]
+script = ExtResource("1_hjjen")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1o38l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sc6s4")

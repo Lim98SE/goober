@@ -1,0 +1,132 @@
+[gd_scene load_steps=18 format=3 uid="uid://ck41kmgg3s5db"]
+
+[ext_resource type="Script" path="res://Source/player.gd" id="1_r4vge"]
+[ext_resource type="Shape2D" uid="uid://ctqgh58mnortl" path="res://Assets/Resources/big_player_shape.tres" id="3_psuat"]
+[ext_resource type="Texture2D" uid="uid://bu76wihrtpq8p" path="res://Assets/Sprites/GooberHimself.png" id="4_2uwf4"]
+[ext_resource type="Shape2D" uid="uid://bytmxoideygvy" path="res://Assets/Resources/small_player_shape.tres" id="4_c87id"]
+[ext_resource type="AudioStream" uid="uid://cmosax6ta2odo" path="res://Assets/Sounds/Hurt.wav" id="5_u66x8"]
+[ext_resource type="AudioStream" uid="uid://iy8if4qqexvo" path="res://Assets/Sounds/Jump.wav" id="6_x5abq"]
+[ext_resource type="AudioStream" uid="uid://brbhsta8q21dp" path="res://Assets/Sounds/SizeUp.wav" id="7_lnljm"]
+[ext_resource type="AudioStream" uid="uid://c6is448aqq50o" path="res://Assets/Sounds/SizeDown.wav" id="8_o1gnt"]
+[ext_resource type="AudioStream" uid="uid://b0876vqcd3dlj" path="res://Assets/Sounds/impact.wav" id="11_5palm"]
+[ext_resource type="AudioStream" uid="uid://daentq251vss5" path="res://Assets/Sounds/boing.wav" id="12_53jx0"]
+[ext_resource type="Texture2D" uid="uid://bh4dc3pl8eknd" path="res://Assets/Sprites/particle.png" id="12_ruuut"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3lsx"]
+atlas = ExtResource("4_2uwf4")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e31tb"]
+atlas = ExtResource("4_2uwf4")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxwuu"]
+atlas = ExtResource("4_2uwf4")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcuk8"]
+atlas = ExtResource("4_2uwf4")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71r4i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3lsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e31tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxwuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcuk8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_1p0gl"]
+interpolation_mode = 2
+colors = PackedColorArray(0.388235, 0.780392, 0.301961, 1, 0.388235, 0.780392, 0.301961, 0)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 3
+floor_snap_length = 16.0
+script = ExtResource("1_r4vge")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 5
+z_as_relative = false
+sprite_frames = SubResource("SpriteFrames_71r4i")
+frame = 3
+
+[node name="BigShape" type="CollisionShape2D" parent="."]
+shape = ExtResource("3_psuat")
+
+[node name="SmallShape" type="CollisionShape2D" parent="."]
+shape = ExtResource("4_c87id")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Big" type="CollisionShape2D" parent="Area2D"]
+shape = ExtResource("3_psuat")
+
+[node name="Small" type="CollisionShape2D" parent="Area2D"]
+shape = ExtResource("4_c87id")
+
+[node name="CheckForCeil" type="RayCast2D" parent="."]
+target_position = Vector2(0, -24)
+
+[node name="CheckForFloor" type="RayCast2D" parent="."]
+target_position = Vector2(0, 24)
+
+[node name="CheckForWallBounceRight" type="RayCast2D" parent="."]
+target_position = Vector2(9, 0)
+
+[node name="CheckForWallBounceLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-9, 0)
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_u66x8")
+bus = &"Sounds"
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_x5abq")
+bus = &"Sounds"
+
+[node name="Grow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lnljm")
+bus = &"Sounds"
+
+[node name="Shrink" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_o1gnt")
+bus = &"Sounds"
+
+[node name="Impact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_5palm")
+bus = &"Sounds"
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(0, 15)
+amount = 80
+texture = ExtResource("12_ruuut")
+emission_shape = 3
+emission_rect_extents = Vector2(7.5, 0)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+color = Color(0.388235, 0.780392, 0.301961, 1)
+color_ramp = SubResource("Gradient_1p0gl")
+
+[node name="Boing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_53jx0")
+bus = &"Sounds"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area"]

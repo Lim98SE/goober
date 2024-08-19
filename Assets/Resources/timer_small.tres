@@ -1,0 +1,12 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://pqt5yyiksvk0"]
+
+[ext_resource type="FontFile" uid="uid://b8yauqrjy03e7" path="res://Assets/Resources/JetBrainsMono-Bold.ttf" id="1_6ye8u"]
+
+[resource]
+font = ExtResource("1_6ye8u")
+font_size = 24
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.411765)
+shadow_offset = Vector2(8, 8)

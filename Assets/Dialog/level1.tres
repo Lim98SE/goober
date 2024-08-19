@@ -1,0 +1,135 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dye6gq7qmb6vi"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_lwmg2"]
+
+[resource]
+script = ExtResource("1_lwmg2")
+starts = {
+"sign1": &"0_1",
+"sign2": &"0_2",
+"sign3": &"0_3",
+"sign4": &"0_4",
+"sign5": &"0_5"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-376, -56),
+"start_id": "sign1"
+},
+"0_2": {
+"link": &"1_2",
+"offset": Vector2(-360, 220),
+"start_id": "sign2"
+},
+"0_3": {
+"link": &"1_4",
+"offset": Vector2(-380, 560),
+"start_id": "sign3"
+},
+"0_4": {
+"link": &"1_5",
+"offset": Vector2(-329, 835),
+"start_id": "sign4"
+},
+"0_5": {
+"link": &"1_6",
+"offset": Vector2(-360, 1160),
+"start_id": "sign5"
+},
+"1_1": {
+"dialogue": "Welcome to Goober!
+Hold X to compress yourself. This makes you smaller and faster, but you're gonna lose all control so be quick!",
+"offset": Vector2(-100, -100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_2": {
+"dialogue": "You can press Z to jump. Standard rules, hold it for a higher jump.",
+"offset": Vector2(-100, 200),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_3": {
+"dialogue": "Also, if you already know how to play, press Escape. Skippable tutorial!",
+"offset": Vector2(300, -100),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_4": {
+"dialogue": "Go through the exit door to end the level. Good luck!",
+"offset": Vector2(-120, 520),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_5": {
+"dialogue": "Hot tip: if you get stuck, press R to respawn at the last checkpoint you hit.",
+"offset": Vector2(-16, 855),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_6": {
+"dialogue": "For a long jump, hold X and shortly after press Z!",
+"offset": Vector2(-20, 1140),
+"options": {
+0: {
+"condition": {},
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_7": {
+"dialogue": "Also, release X mid-air to drop down. Compressing also gives you a boost downwards, so keep that in mind!",
+"offset": Vector2(400, 1140),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = "res://Assets/Dialog/characters.tres"

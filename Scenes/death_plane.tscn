@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bughvowpisyh4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_olt5d"]
+
+[node name="DeathPlane" type="Area2D" groups=["Dangerous"]]
+position = Vector2(0, 180)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_olt5d")

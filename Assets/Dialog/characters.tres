@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterList" load_steps=4 format=3 uid="uid://dbfavl1sb35ky"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.gd" id="1_2qdae"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/CharacterList.gd" id="2_rniaj"]
+[ext_resource type="Resource" uid="uid://dg2l66ln5ghih" path="res://Assets/Dialog/sign.tres" id="2_sdy66"]
+
+[resource]
+script = ExtResource("2_rniaj")
+characters = Array[ExtResource("1_2qdae")]([ExtResource("2_sdy66")])

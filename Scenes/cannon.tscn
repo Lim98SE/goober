@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuhqtgbd6m3ke"]
+
+[ext_resource type="Script" path="res://Source/cannon.gd" id="1_nwjo8"]
+[ext_resource type="Texture2D" uid="uid://lkh3tnpretb1" path="res://Assets/Sprites/cannon.png" id="1_qox1f"]
+[ext_resource type="AudioStream" uid="uid://030fg8wvlt57" path="res://Assets/Sounds/fire.wav" id="3_ht622"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlbnt"]
+size = Vector2(16, 16)
+
+[node name="cannon" type="StaticBody2D" groups=["NoBullet"]]
+script = ExtResource("1_nwjo8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("1_qox1f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jlbnt")
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="MultiTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="FireSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ht622")
+max_distance = 500.0
+bus = &"Sounds"
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="timeout" from="MultiTimer" to="." method="_on_multi_timer_timeout"]

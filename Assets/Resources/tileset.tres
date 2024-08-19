@@ -1,0 +1,53 @@
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://ytloibrsml6r"]
+
+[ext_resource type="Texture2D" uid="uid://cs8q5h3wlhy4t" path="res://Assets/Sprites/16x16Tilemap-export.png" id="1_yt05g"]
+[ext_resource type="PackedScene" uid="uid://calirj52u5rxy" path="res://Scenes/downSpike.tscn" id="2_6fo8t"]
+[ext_resource type="PackedScene" uid="uid://dfxn0gf7yo31c" path="res://Scenes/leftSpike.tscn" id="3_3f1pi"]
+[ext_resource type="PackedScene" uid="uid://lumx7d7yj55j" path="res://Scenes/rightSpike.tscn" id="4_ytmtd"]
+[ext_resource type="PackedScene" uid="uid://cvhrlx34ojexq" path="res://Scenes/bounce_pad.tscn" id="5_nywfg"]
+[ext_resource type="PackedScene" uid="uid://b8eb4on3kqruh" path="res://Scenes/spike.tscn" id="8_b61ap"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jcfnv"]
+texture = ExtResource("1_yt05g")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
+3:0/0/physics_layer_0/polygon_0/one_way = true
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 8, -8, -8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2gkih"]
+resource_name = "Objects"
+scenes/1/scene = ExtResource("2_6fo8t")
+scenes/2/scene = ExtResource("3_3f1pi")
+scenes/3/scene = ExtResource("4_ytmtd")
+scenes/4/scene = ExtResource("5_nywfg")
+scenes/7/scene = ExtResource("8_b61ap")
+
+[resource]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_jcfnv")
+sources/2 = SubResource("TileSetScenesCollectionSource_2gkih")

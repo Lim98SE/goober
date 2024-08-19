@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4eb5ikj810db"]
+
+[ext_resource type="Script" path="res://Source/portal.gd" id="1_ytyy7"]
+[ext_resource type="Texture2D" uid="uid://cif8uelh6tsfe" path="res://Assets/Sprites/portals.png" id="2_adj1d"]
+[ext_resource type="AudioStream" uid="uid://b0t61eujjorup" path="res://Assets/Sounds/portal.mp3" id="3_047lw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_arsn5"]
+radius = 8.0
+
+[node name="portal" type="Area2D" groups=["Portal"]]
+script = ExtResource("1_ytyy7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_adj1d")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_arsn5")
+
+[node name="use" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_047lw")
+bus = &"Sounds"
+
+[connection signal="area_entered" from="." to="." method="on_area"]
+[connection signal="body_entered" from="." to="." method="on_player"]

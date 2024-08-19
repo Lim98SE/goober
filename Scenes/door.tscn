@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://mgtgemo0s8hh"]
+
+[ext_resource type="Script" path="res://Source/door.gd" id="1_txxis"]
+[ext_resource type="Texture2D" uid="uid://dwisbljke3u37" path="res://Assets/Sprites/door.png" id="2_0tecn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_arsn5"]
+radius = 8.0
+
+[node name="door" type="Area2D" groups=["Door", "Interactable"]]
+script = ExtResource("1_txxis")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0tecn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_arsn5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

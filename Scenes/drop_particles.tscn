@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://w8x8br7crvvw"]
+
+[ext_resource type="Texture2D" uid="uid://bh4dc3pl8eknd" path="res://Assets/Sprites/particle.png" id="1_3on2r"]
+
+[node name="dropParticles" type="CPUParticles2D"]
+z_index = -50
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_3on2r")
+direction = Vector2(0, -1)
+initial_velocity_min = 100.0
+initial_velocity_max = 400.0
+color = Color(0.388235, 0.780392, 0.301961, 1)

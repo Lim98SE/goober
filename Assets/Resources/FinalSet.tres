@@ -1,0 +1,101 @@
+[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://dxo6juo8hm4kp"]
+
+[ext_resource type="Texture2D" uid="uid://bj2adyy3q8yts" path="res://Assets/Sprites/GooberTmap.png" id="1_im5k1"]
+[ext_resource type="PackedScene" uid="uid://calirj52u5rxy" path="res://Scenes/downSpike.tscn" id="2_0e3xp"]
+[ext_resource type="PackedScene" uid="uid://dfxn0gf7yo31c" path="res://Scenes/leftSpike.tscn" id="3_47hbu"]
+[ext_resource type="PackedScene" uid="uid://lumx7d7yj55j" path="res://Scenes/rightSpike.tscn" id="4_x2l1j"]
+[ext_resource type="PackedScene" uid="uid://b8eb4on3kqruh" path="res://Scenes/spike.tscn" id="5_wteov"]
+[ext_resource type="PackedScene" uid="uid://cvhrlx34ojexq" path="res://Scenes/bounce_pad.tscn" id="6_w8s8k"]
+[ext_resource type="PackedScene" uid="uid://ceh547j4oai2j" path="res://Scenes/gooDropper.tscn" id="7_grf3p"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o834l"]
+texture = ExtResource("1_im5k1")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 0, 0, 8, -8, 8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0, 0, 8, 8, -8, 8)
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 0, 0, -8, -8, 8, -8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 0, 0, -8, 8, -8, -8)
+2:2/0 = 0
+2:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/next_alternative_id = 2
+4:0/animation_columns = 4
+4:0/animation_frame_0/duration = 0.25
+4:0/animation_frame_1/duration = 0.25
+4:0/animation_frame_2/duration = 0.25
+4:0/animation_frame_3/duration = 0.25
+4:0/0 = 0
+4:0/0/z_index = -2
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+6:2/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+6:4/0 = 0
+5:4/0 = 0
+4:4/0 = 0
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:5/animation_frame_0/duration = 0.25
+3:5/animation_frame_1/duration = 1.0
+3:5/0 = 0
+0:2/0 = 0
+0:5/0 = 0
+0:6/animation_columns = 4
+0:6/animation_frame_0/duration = 0.1
+0:6/animation_frame_1/duration = 0.1
+0:6/animation_frame_2/duration = 0.1
+0:6/animation_frame_3/duration = 0.1
+0:6/0 = 0
+4:6/animation_columns = 2
+4:6/animation_frame_0/duration = 1.0
+4:6/animation_frame_1/duration = 1.0
+4:6/0 = 0
+4:7/animation_frame_0/duration = 1.0
+4:7/animation_frame_1/duration = 1.0
+4:7/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+7:5/0 = 0
+6:6/animation_frame_0/duration = 0.5
+6:6/animation_frame_1/duration = 0.5
+6:6/0 = 0
+6:7/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_jeu2g"]
+scenes/1/scene = ExtResource("2_0e3xp")
+scenes/2/scene = ExtResource("3_47hbu")
+scenes/3/scene = ExtResource("4_x2l1j")
+scenes/4/scene = ExtResource("5_wteov")
+scenes/5/scene = ExtResource("6_w8s8k")
+scenes/6/scene = ExtResource("7_grf3p")
+
+[resource]
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
+physics_layer_1/collision_layer = 1
+sources/2 = SubResource("TileSetAtlasSource_o834l")
+sources/3 = SubResource("TileSetScenesCollectionSource_jeu2g")

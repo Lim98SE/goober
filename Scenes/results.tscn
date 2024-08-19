@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://dootf2r2oiqx"]
+
+[ext_resource type="LabelSettings" uid="uid://dnekwurdvmdlu" path="res://Assets/Resources/timer.tres" id="1_r7qve"]
+[ext_resource type="Script" path="res://Source/results.gd" id="1_y182f"]
+[ext_resource type="Theme" uid="uid://bjf5gtjsh1g3a" path="res://Assets/Resources/gui.tres" id="2_t8jq8"]
+[ext_resource type="AudioStream" uid="uid://dfuu4akk7odkq" path="res://Assets/Sounds/tick.wav" id="4_fo7fm"]
+[ext_resource type="Script" path="res://Source/replay.gd" id="4_fphhp"]
+[ext_resource type="Script" path="res://Source/transitionButton.gd" id="5_24wyx"]
+[ext_resource type="AudioStream" uid="uid://bvatrl6xgthko" path="res://Assets/Sounds/ding.wav" id="5_nqd28"]
+[ext_resource type="Script" path="res://Source/next_level.gd" id="6_f0maq"]
+[ext_resource type="PackedScene" uid="uid://dvs0ux20gasq2" path="res://Scenes/Background.tscn" id="9_1e50h"]
+
+[node name="Scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y182f")
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 0
+offset_top = 176.0
+offset_right = 640.0
+offset_bottom = 219.0
+text = "10:00.000"
+label_settings = ExtResource("1_r7qve")
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 136.0
+offset_right = 640.0
+offset_bottom = 179.0
+text = "Your Time:"
+label_settings = ExtResource("1_r7qve")
+horizontal_alignment = 1
+
+[node name="record" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 256.0
+offset_right = 640.0
+offset_bottom = 299.0
+text = "New Record!"
+label_settings = ExtResource("1_r7qve")
+horizontal_alignment = 1
+
+[node name="Replay" type="Button" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 312.0
+offset_right = 120.0
+offset_bottom = 349.0
+theme = ExtResource("2_t8jq8")
+text = "Replay"
+script = ExtResource("4_fphhp")
+
+[node name="Menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 312.0
+offset_right = 240.0
+offset_bottom = 349.0
+theme = ExtResource("2_t8jq8")
+text = "Menu"
+script = ExtResource("5_24wyx")
+to = "menu"
+
+[node name="NextLevel" type="Button" parent="."]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 312.0
+offset_right = 408.0
+offset_bottom = 349.0
+theme = ExtResource("2_t8jq8")
+text = "Next Level"
+script = ExtResource("6_f0maq")
+
+[node name="Tick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fo7fm")
+bus = &"Sounds"
+
+[node name="Ding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nqd28")
+bus = &"Sounds"
+
+[node name="WaitToStart" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Background" parent="." instance=ExtResource("9_1e50h")]
+
+[connection signal="timeout" from="WaitToStart" to="." method="_on_wait_to_start_timeout"]

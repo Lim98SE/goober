@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgguteq818i1"]
+
+[ext_resource type="AudioStream" uid="uid://5wvd6dd260lj" path="res://Assets/Music/2.05 Act Complete.mp3" id="1_3dhjg"]
+[ext_resource type="Texture2D" uid="uid://chgkimixske8" path="res://Assets/Sprites/9x_logo_tr.png" id="1_48278"]
+[ext_resource type="Script" path="res://Source/logos.gd" id="1_iit54"]
+[ext_resource type="LabelSettings" uid="uid://dnekwurdvmdlu" path="res://Assets/Resources/timer.tres" id="2_yddn3"]
+[ext_resource type="Texture2D" uid="uid://dl5jsli0eiye6" path="res://Assets/Sprites/LTAD7c.png" id="3_fa843"]
+
+[node name="Scene" type="Node2D"]
+script = ExtResource("1_iit54")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="9XGames" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(192, 128)
+texture = ExtResource("1_48278")
+
+[node name="9XGames2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(448, 128)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_fa843")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_top = 256.0
+offset_right = 640.0
+offset_bottom = 345.0
+text = "Game Design & Art: Lim95
+Music & Voice Acting: LeafBush_"
+label_settings = ExtResource("2_yddn3")
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_3dhjg")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

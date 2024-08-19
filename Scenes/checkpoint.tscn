@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqq8qdijaq8ig"]
+
+[ext_resource type="Texture2D" uid="uid://boqlh3vp4hfls" path="res://Assets/Sprites/CheckpointNew.png" id="1_iysj6"]
+[ext_resource type="Script" path="res://Source/checkpoint.gd" id="1_scrrc"]
+[ext_resource type="AudioStream" uid="uid://856c34l1a3md" path="res://Assets/Sounds/Checkpoint.wav" id="3_doqfi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjmtm"]
+size = Vector2(16, 32)
+
+[node name="Checkpoint" type="Area2D" groups=["Checkpoint"]]
+script = ExtResource("1_scrrc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_iysj6")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kjmtm")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -32)
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_doqfi")
+volume_db = 10.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

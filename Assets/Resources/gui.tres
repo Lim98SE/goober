@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bjf5gtjsh1g3a"]
+
+[ext_resource type="FontFile" uid="uid://b8yauqrjy03e7" path="res://Assets/Resources/JetBrainsMono-Bold.ttf" id="1_nbu33"]
+[ext_resource type="StyleBox" uid="uid://c7bb0mncoom0q" path="res://Assets/Resources/menuButton.tres" id="2_4d2v0"]
+[ext_resource type="StyleBox" uid="uid://dx103vkugg1kk" path="res://Assets/Resources/slider.tres" id="3_i3atj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sxhlb"]
+
+[resource]
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_nbu33")
+Button/styles/disabled = ExtResource("2_4d2v0")
+Button/styles/focus = ExtResource("2_4d2v0")
+Button/styles/hover = ExtResource("2_4d2v0")
+Button/styles/normal = ExtResource("2_4d2v0")
+HSlider/styles/slider = ExtResource("3_i3atj")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/fonts/font = ExtResource("1_nbu33")
+Panel/styles/panel = ExtResource("2_4d2v0")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/fonts/normal_font = ExtResource("1_nbu33")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_sxhlb")

@@ -1,0 +1,420 @@
+[gd_scene load_steps=33 format=3 uid="uid://lju4o4atbu50"]
+
+[ext_resource type="Script" path="res://Source/timer_ui.gd" id="1_n4n3a"]
+[ext_resource type="LabelSettings" uid="uid://dnekwurdvmdlu" path="res://Assets/Resources/timer.tres" id="1_qa5om"]
+[ext_resource type="LabelSettings" uid="uid://pqt5yyiksvk0" path="res://Assets/Resources/timer_small.tres" id="3_7bnxe"]
+[ext_resource type="Theme" uid="uid://bjf5gtjsh1g3a" path="res://Assets/Resources/gui.tres" id="3_ddss0"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_yi734"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_xmmpj"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_u2jwa"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_7mecg"]
+[ext_resource type="AudioStream" uid="uid://doqbkg2yeluuq" path="res://Assets/Sounds/speak.mp3" id="6_ol1ba"]
+[ext_resource type="LabelSettings" uid="uid://df0fqgj73wwe4" path="res://Assets/Resources/countdown.tres" id="8_824wq"]
+[ext_resource type="Resource" uid="uid://gc3ofs4xjoe1" path="res://Assets/Resources/debug_dialog.tres" id="8_q06ar"]
+[ext_resource type="AudioStream" uid="uid://bcvn3e35wn17p" path="res://Assets/Sounds/airhorn-6466.mp3" id="9_8g73f"]
+[ext_resource type="AudioStream" uid="uid://b2sc3ssrs1lra" path="res://Assets/Sounds/beep.wav" id="12_1c62u"]
+[ext_resource type="Script" path="res://Source/input_display.gd" id="12_o7sy2"]
+[ext_resource type="Texture2D" uid="uid://cbdol6wrggw31" path="res://Assets/Sprites/keys.png" id="12_reonn"]
+[ext_resource type="Script" path="res://Source/unpause_button.gd" id="15_vmeo3"]
+[ext_resource type="Script" path="res://Source/replay.gd" id="16_j254k"]
+[ext_resource type="Script" path="res://Source/transitionButton.gd" id="18_7lktx"]
+
+[sub_resource type="Animation" id="Animation_dxh1e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogOverlay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogOverlay:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_benuq"]
+resource_name = "overlayIn"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogOverlay:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -360), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogOverlay:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.431373)]
+}
+
+[sub_resource type="Animation" id="Animation_iq6r8"]
+resource_name = "overlayOut"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogOverlay:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogOverlay:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.431373), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sggh0"]
+_data = {
+"RESET": SubResource("Animation_dxh1e"),
+"overlayIn": SubResource("Animation_benuq"),
+"overlayOut": SubResource("Animation_iq6r8")
+}
+
+[sub_resource type="Animation" id="Animation_rr232"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Best:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Best:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_ar373"]
+resource_name = "out"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Best:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Best:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 32), Vector2(320, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kohu7"]
+_data = {
+"RESET": SubResource("Animation_rr232"),
+"out": SubResource("Animation_ar373")
+}
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_kd4dc"]
+script = ExtResource("4_xmmpj")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_tyd71"]
+script = ExtResource("5_u2jwa")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_v3nm6"]
+script = ExtResource("6_7mecg")
+
+[sub_resource type="Animation" id="Animation_oln7o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-248, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ds2nx"]
+resource_name = "pauseIn"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseMenu:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-240, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kjt0u"]
+resource_name = "pauseOut"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseMenu:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-240, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xv68x"]
+_data = {
+"RESET": SubResource("Animation_oln7o"),
+"pauseIn": SubResource("Animation_ds2nx"),
+"pauseOut": SubResource("Animation_kjt0u")
+}
+
+[node name="TimerUI" type="CanvasLayer"]
+script = ExtResource("1_n4n3a")
+
+[node name="Timer" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "0:00.000"
+label_settings = ExtResource("1_qa5om")
+horizontal_alignment = 1
+
+[node name="Best" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 32.0
+offset_bottom = 75.0
+grow_horizontal = 2
+text = "Best: 0:00.000"
+label_settings = ExtResource("3_7bnxe")
+horizontal_alignment = 1
+
+[node name="Countdown" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+label_settings = ExtResource("8_824wq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CountdownTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Go" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_8g73f")
+bus = &"Sounds"
+
+[node name="Speak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ol1ba")
+bus = &"Sounds"
+
+[node name="Count" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_1c62u")
+bus = &"Sounds"
+
+[node name="OverlayAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sggh0")
+}
+
+[node name="BestOut" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kohu7")
+}
+
+[node name="InputDisplay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_o7sy2")
+
+[node name="interact" type="Sprite2D" parent="InputDisplay"]
+position = Vector2(624, 344)
+texture = ExtResource("12_reonn")
+hframes = 3
+vframes = 2
+
+[node name="toggle" type="Sprite2D" parent="InputDisplay"]
+position = Vector2(600, 344)
+texture = ExtResource("12_reonn")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="jump" type="Sprite2D" parent="InputDisplay"]
+position = Vector2(576, 344)
+texture = ExtResource("12_reonn")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="left" type="Sprite2D" parent="InputDisplay"]
+position = Vector2(528, 344)
+texture = ExtResource("12_reonn")
+hframes = 3
+vframes = 2
+frame = 2
+
+[node name="right" type="Sprite2D" parent="InputDisplay"]
+position = Vector2(552, 344)
+texture = ExtResource("12_reonn")
+hframes = 3
+vframes = 2
+frame = 1
+
+[node name="DialogOverlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 360.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Dialog" type="Panel" parent="."]
+visible = false
+offset_left = 8.0
+offset_top = 216.0
+offset_right = 632.0
+offset_bottom = 352.0
+theme = ExtResource("3_ddss0")
+script = ExtResource("3_yi734")
+data = ExtResource("8_q06ar")
+start_id = "debugDialog"
+hide_portrait = true
+scroll_speed = 20
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kd4dc"), SubResource("RichTextEffect_tyd71"), SubResource("RichTextEffect_v3nm6")])
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -248.0
+offset_right = -208.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 123.0
+offset_bottom = 51.0
+text = "Paused"
+label_settings = ExtResource("1_qa5om")
+
+[node name="Back" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 224.0
+offset_bottom = 96.0
+theme = ExtResource("3_ddss0")
+text = "Back to Game"
+script = ExtResource("15_vmeo3")
+
+[node name="Restart" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 224.0
+offset_bottom = 144.0
+theme = ExtResource("3_ddss0")
+text = "Restart Level"
+script = ExtResource("16_j254k")
+
+[node name="Menu" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 224.0
+offset_bottom = 192.0
+theme = ExtResource("3_ddss0")
+text = "Go to Menu"
+script = ExtResource("18_7lktx")
+to = "menu"
+
+[node name="PauseAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xv68x")
+}
+
+[connection signal="dialogue_ended" from="Dialog" to="." method="_on_dialog_dialogue_ended"]
+[connection signal="dialogue_started" from="Dialog" to="." method="_on_dialog_dialogue_started"]
+[connection signal="pressed" from="PauseMenu/Back" to="PauseMenu/Back" method="_on_pressed"]

@@ -1,0 +1,149 @@
+[gd_scene load_steps=22 format=3 uid="uid://mrrlf6i0715o"]
+
+[ext_resource type="Script" path="res://Source/exit_door.gd" id="1_b4n7n"]
+[ext_resource type="Texture2D" uid="uid://d3tvhg8s65lq" path="res://Assets/Sprites/ExitDoor.png" id="1_ocdk5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apr43"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqbn6"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bodtg"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxh1r"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1xgx"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuh0o"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(32, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qatal"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(64, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yra2c"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(96, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x03ux"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yinw"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(32, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps1jx"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(64, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u66ks"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(96, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm5fj"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(0, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm0qx"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(32, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doapq"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(64, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wofex"]
+atlas = ExtResource("1_ocdk5")
+region = Rect2(96, 192, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3hv2d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apr43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqbn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bodtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxh1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1xgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuh0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qatal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yra2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x03ux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yinw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps1jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u66ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm5fj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm0qx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doapq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wofex")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7iar"]
+size = Vector2(32, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qi2nc"]
+radius = 256.0
+
+[node name="ExitDoor" type="Area2D"]
+script = ExtResource("1_b4n7n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3hv2d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d7iar")
+
+[node name="Detection" type="Area2D" parent="."]
+
+[node name="DetectionCollider" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_qi2nc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="anim_finished"]
+[connection signal="body_entered" from="Detection" to="." method="detected"]
+[connection signal="body_exited" from="Detection" to="." method="detected_exit"]

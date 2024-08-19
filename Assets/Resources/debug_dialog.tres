@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://gc3ofs4xjoe1"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_qtjbv"]
+
+[resource]
+script = ExtResource("1_qtjbv")
+starts = {
+"debugDialog": &"0_1",
+"doorTutorial": &"0_2"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-346, -271),
+"start_id": "debugDialog"
+},
+"0_2": {
+"link": &"1_4",
+"offset": Vector2(-391, 34),
+"start_id": "doorTutorial"
+},
+"1_1": {
+"dialogue": "Hi! Use Z to jump and X to shrink.",
+"offset": Vector2(29, -286),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Sign"
+},
+"1_2": {
+"dialogue": "If you shrink, you move really fast but lose control. You can still jump!",
+"offset": Vector2(440, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Sign"
+},
+"1_3": {
+"dialogue": "Try to get to the end as fast as you can. Don't worry, the timer's paused for dialog!",
+"offset": Vector2(860, -280),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Sign"
+},
+"1_4": {
+"dialogue": "Doors are two-way, just hit up next to one and you'll go to the other.",
+"offset": Vector2(20, 20),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Sign"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""

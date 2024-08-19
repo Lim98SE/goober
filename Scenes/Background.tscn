@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvs0ux20gasq2"]
+
+[ext_resource type="Texture2D" uid="uid://bomvgqm18kox3" path="res://Assets/Sprites/bg.png" id="1_knwgh"]
+
+[node name="Background" type="ParallaxBackground"]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+scroll_limit_end = Vector2(0, 720)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1280, 720)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture_repeat = 2
+texture = ExtResource("1_knwgh")
+centered = false

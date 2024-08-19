@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci4ttkpro730f"]
+
+[ext_resource type="Script" path="res://Source/bullet.gd" id="1_de0yt"]
+[ext_resource type="Texture2D" uid="uid://5wum85g86d1w" path="res://Assets/Sprites/bulletNew.png" id="2_4qr5b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4g5cb"]
+radius = 2.0
+
+[node name="Bullet" type="Area2D" groups=["Dangerous"]]
+script = ExtResource("1_de0yt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("2_4qr5b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4g5cb")
