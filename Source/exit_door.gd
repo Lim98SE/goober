@@ -23,7 +23,6 @@ func _physics_process(delta: float) -> void:
 			
 			if !playerReadyToExit:
 				body.global_position.x = global_position.x
-				body.get_node("Sprite").z_index = -2
 				body.big = true
 				body.zoomIn = true
 				body.get_node("Camera2D").global_position = global_position

@@ -12,6 +12,7 @@ var target_score = 0
 var certified = false
 
 func _ready() -> void:
+	$Level.z_index = 1000
 	if !tutorialMode:
 		highscores = Score.load_scores()
 		var level_index = root.levels.find(root.current_level)

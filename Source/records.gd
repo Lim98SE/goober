@@ -39,13 +39,14 @@ func reload_scores():
 	var total = 0.0
 	
 	for i in highscores:
+		if i == 120: continue
 		total += i
 	
 	var disp: Label = scoredisplay.instantiate()
 	var score = total
 	
 	disp.time_funnel = score + 1
-	disp.level = -1
+	disp.level = "total"
 	
 	disp.global_position.x = 0
 	disp.global_position.y = 128 + (len(highscores) * 48)

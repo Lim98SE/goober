@@ -67,6 +67,6 @@ dialogBranch = "sign5"
 dialogData = ExtResource("9_5jn8h")
 
 [node name="ExitDoor" parent="Objects" instance=ExtResource("11_w0mop")]
-position = Vector2(-696, -1464)
+position = Vector2(-696, -1472)
 
 [node name="Background" parent="." instance=ExtResource("13_h6oou")]

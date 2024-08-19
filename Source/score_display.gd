@@ -64,7 +64,7 @@ func _ready() -> void:
 	text = ""
 
 func _physics_process(delta: float) -> void:
-	if time_funnel >= 120 and !funnelFinished:
+	if time_funnel >= 120 and !funnelFinished and not level is String:
 		$Ding.play()
 		$Cooldown.start()
 		text = "Level %d: Not played yet" % level
@@ -72,14 +72,11 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	if !funnelFinished:
-		var fstring = "Level %d: %s"
-		
-		if level == -1:
-			fstring = "Total: %s"
-			text = fstring % [time_convert(time)]
+		if level is String:
+			text = "Total: %s" % [time_convert(time)]
 		
 		else:
-			text = fstring % [level, time_convert(time)]
+			text = "Level %d: %s" % [level, time_convert(time)]
 		
 		if tick == frames_between_tick:
 			funnel_tick()

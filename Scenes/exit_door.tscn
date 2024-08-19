@@ -133,6 +133,7 @@ radius = 256.0
 script = ExtResource("1_b4n7n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 4096
 sprite_frames = SubResource("SpriteFrames_3hv2d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
