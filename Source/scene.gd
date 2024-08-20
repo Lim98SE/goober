@@ -18,6 +18,9 @@ func _ready() -> void:
 		var level_index = root.levels.find(root.current_level)
 		target_score = highscores[level_index]
 		$TimerUI.best = target_score
+		
+		if get_tree().current_scene.instrumental:
+			$Music.stream = load("res://Assets/Music/GooInst.mp3")
 	
 	else:
 		$TimerUI.tutorial = true

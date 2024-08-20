@@ -33,7 +33,7 @@ offset_top = 256.0
 offset_right = 640.0
 offset_bottom = 345.0
 text = "Game Design & Art: Lim95
-Music & Voice Acting: LeafBush_"
+Music: LeafBush_"
 label_settings = ExtResource("2_yddn3")
 horizontal_alignment = 1
 

@@ -3,6 +3,7 @@ extends Node2D
 @export var transitioning_to = "menu"
 @export var current_level = "debugLevel"
 @export var time: float = 499.807
+@export var instrumental = false
 
 @export var levels = [
 	"Level1",
